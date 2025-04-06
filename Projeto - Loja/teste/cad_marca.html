@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cadastro de Marcas </title>
+    <link rel="shortcut icon" href="loja_icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header><img src="loja_logo.png" width="150"></header>
+
+    <main>
+        <div id="titulo">
+            <h1> Formulário de Cadastro de Marcas </h1>
+        </div>
+
+        <form class='form' name="formulario" method="POST" action="cad_marca.php">
+            <fieldset>
+                <legend> Dados da Marca: </legend>
+                <label> Código: <input type="text" name="codigo" id="codigo" size="5"></label><br><br>
+                <label> Nome: <input type="text" name="nome" id="nome" size="50"></label><br><br>
+            </fieldset>
+            <button type="submit" name="Gravar"> Gravar </button>
+            <button type="submit" name="Alterar"> Alterar </button>
+            <button type="submit" name="Excluir"> Excluir </button>
+            <button type="submit" name="Pesquisar"> Pesquisar </button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pedro Henrique do Nascimento Urbano - Todos os direitos reservados. </p>
+    </footer>
+</body>
+
+</html>
