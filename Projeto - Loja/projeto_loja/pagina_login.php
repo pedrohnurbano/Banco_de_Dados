@@ -59,7 +59,7 @@ if (isset($_POST['Entrar']))
     </main>
 
     <footer>
-        <p>&copy; 2025 Pedro Henrique do Nascimento Urbano - Todos os direitos reservados. </p>
+        <p>&copy; 2025 Visual Modas By Kel - Todos os direitos reservados. </p>
     </footer>
 </body>
 
