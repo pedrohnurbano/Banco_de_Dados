@@ -112,3 +112,52 @@ $sql = "SELECT codigo,descricao,cor,tamanho,preco,cod_marca,cod_categoria,cod_ti
     }   
 }
 ?>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cadastro de Produtos </title>
+    <link rel="shortcut icon" href="loja_icone.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header><img src="loja_logo.png" width="150"></header>
+
+    <main>
+        <div id="titulo">
+            <h1> Formulário de Cadastro de Produtos </h1>
+        </div>
+
+        <form class='form' name="formulario" method="POST" action="cad_produto.php" enctype="multipart/form-data">
+            <fieldset>
+                <legend> Dados do Produto: </legend>
+                <label>  Código:              <input type="text" name="codigo"        id="codigo"        size="5" ></label><br><br>
+                <label>  Descrição:           <input type="text" name="descricao"     id="descricao"     size="100"></label><br><br>
+                <label>  Cor:                 <input type="text" name="cor"           id="cor"           size="50" ></label><br><br>
+                <label>  Tamanho:             <input type="text" name="tamanho"       id="tamanho"       size="10"></label><br><br>
+                <label>  Preço:               <input type="text" name="preco"         id="preco"         size="12" ></label><br><br>
+                <label>  Código da Marca:     <input type="text" name="cod_marca"     id="cod_marca"     size="5"></label><br><br>
+                <label>  Código da Categoria: <input type="text" name="cod_categoria" id="cod_categoria" size="5" ></label><br><br>
+                <label>  Código do Tipo:      <input type="text" name="cod_tipo"      id="cod_tipo"      size="5"></label><br><br>
+                <label>  Foto 1:              <input type="file" name="foto1"         id="foto1"                 ></label><br><br>
+                <label>  Foto 2:              <input type="file" name="foto2"         id="foto2"                 ></label><br><br>
+            </fieldset>
+            <button type="submit" name="Gravar" value="Gravar">    Gravar    </button>
+            <button type="submit" name="Alterar">   Alterar   </button>
+            <button type="submit" name="Excluir">   Excluir   </button>
+            <button type="submit" name="Pesquisar"> Pesquisar </button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Visual Modas By Kel - Todos os direitos reservados. </p>
+    </footer>
+</body>
+
+</html>

@@ -36,7 +36,7 @@ if (isset($_POST['Entrar']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Página de Login </title>
-    <link rel="shortcut icon" href="loja_icon.png" type="image/png">
+    <link rel="shortcut icon" href="loja_icone.png" type="image/png">
     <link rel="stylesheet"    href="styles.css">
 </head>
 

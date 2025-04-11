@@ -2,16 +2,16 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: URL(diamantes_background.png);
-    color: #ffffff;
+    background-color: white;
+    color: black;
 }
 
 header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #370400;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 10px 20px;
 }
 
@@ -27,7 +27,7 @@ header li {
 }
 
 header a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: bold;
 }
@@ -39,13 +39,13 @@ header a:hover {
 #titulo {
     text-align: center;
     margin: 50px 0;
-    color: black;
+    color: white;
 }
 
 form {
     max-width: 400px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: black;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -88,8 +88,8 @@ button {
     width: 100%;
     padding: 12px 20px;
     font-size: 1.1em;
-    color: #fff;
-    background-color: #370400;
+    color: black;
+    background-color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -98,12 +98,12 @@ button {
 }
 
 button:hover {
-    background-color: #370400;
+    background-color: white;
 }
 
 footer {
-    background: #222;
-    color: white;
+    background: white;
+    color: black;
     padding: 20px 0;
     text-align: center;
 }
@@ -125,8 +125,8 @@ main2 {
 }
 
 footer2 {
-    background: #222;
-    color: #fff;
+    background: white;
+    color: black;
     padding: 20px 0;
     text-align: center;
 }
@@ -138,8 +138,8 @@ button2 {
     width: 100%;
     padding: 6px 10px;
     font-size: 1.1em;
-    color: #370400;
-    background-color: #fff;
+    color: white;
+    background-color: black;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -159,7 +159,7 @@ button2 {
 .banner-slideshow {
     position: relative;
     max-width: 100%;
-    margin: 20px auto;
+    /* margin: 20px auto; */
 }
 
 .slides {
@@ -168,8 +168,6 @@ button2 {
 
 .slides img {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .fade {
@@ -189,9 +187,8 @@ button2 {
     color: white;
     font-weight: bold;
     font-size: 24px;
-    border-radius: 0 3px 3px 0;
     user-select: none;
-    background-color: rgba(0,0,0,0.4);
+    background-color: transparent;
     transform: translateY(-50%);
     z-index: 1;
 }
@@ -202,5 +199,5 @@ button2 {
 }
 
 .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+    background-color: transparent;
 }

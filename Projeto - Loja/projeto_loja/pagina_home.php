@@ -8,14 +8,17 @@ $db      = mysql_select_db('loja');
 
 <head>
     <meta charset="UTF-8">
-    <title> Home - Visual Modas By Kel </title>
-    <link rel="shortcut icon" href="loja_icon.png" type="image/png">
+    <title> GREECE SPORTS | Brazil </title>
+    <link rel="shortcut icon" href="design_images/greece_icon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
-        <img src="loja_logo.png" width="150" alt="Logo da Loja">
+        <a href="pagina_home.php">
+            <img src="loja_logotipo2.png" width="176" height="auto" alt="Logo da Loja">
+        </a>
+
         <a href="pagina_login.php">
             <img src="usuario_icon.png" width="24" height="24" alt="Login">
         </a>
@@ -32,13 +35,13 @@ $db      = mysql_select_db('loja');
     <!-- Banner com Setas -->
     <div class="banner-slideshow">
         <div class="slides fade">
-            <img src="banner_01.png" style="width:100%">
+            <img src="design_images/banner_01.png" style="width:100%" height="auto">
         </div>
         <div class="slides fade">
-            <img src="banner_02.png" style="width:100%">
+            <img src="design_images/banner_02.png" style="width:100%" height="auto">
         </div>
         <div class="slides fade">
-            <img src="banner_03.png" style="width:100%">
+            <img src="design_images/banner_03.png" style="width:100%" height="auto">
         </div>
 
         <!-- Setas -->
