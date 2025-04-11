@@ -16,19 +16,23 @@ $db      = mysql_select_db('loja');
 <body>
     <header>
         <a href="pagina_home.php">
-            <img src="loja_logotipo2.png" width="176" height="auto" alt="Logo da Loja">
+            <img src="design_images/greece_logo.png" width="264" alt="Logo da Loja">
         </a>
 
         <a href="pagina_login.php">
-            <img src="usuario_icon.png" width="24" height="24" alt="Login">
+            <img src="design_images/search_icon.png" width="24" height="24" alt="Pesquisar">
+        </a>
+
+        <a href="pagina_login.php">
+            <img src="design_images/user_icon.png" width="24" height="24" alt="Login">
         </a>
 
         <a href="pagina_home.php">
-            <img src="favoritos_icon.png" width="24" height="24" alt="Favoritos">
+            <img src="design_images/favorite_icon.png" width="24" height="24" alt="Favoritos">
         </a>
-
+        
         <a href="pagina_home.php">
-            <img src="sacola_icon.png" width="24" height="24" alt="Sacola">
+            <img src="design_images/bag_icon.png" width="24" height="24" alt="Sacola">
         </a>
     </header>
 
@@ -77,7 +81,7 @@ $db      = mysql_select_db('loja');
 
     <main>
         <div id="titulo">
-            <h1>Material Esportivo</h1>
+            <h1> Material Esportivo </h1>
         </div>
 
         <section>
@@ -85,9 +89,9 @@ $db      = mysql_select_db('loja');
             <form name="formulario" method="post" action="pesquisar.php" class="form">
 
                 <!-- Categorias -->
-                <label for="categoria">Categorias:</label>
+                <label for="categoria"> Categorias: </label>
                 <select name="categoria" id="categoria">
-                    <option value="" selected>Selecione...</option>
+                    <option value="" selected> Selecione... </option>
                     <?php
                     $query = mysql_query("SELECT codigo, descricao FROM categoria");
                     while($categorias = mysql_fetch_array($query)) {
@@ -97,9 +101,9 @@ $db      = mysql_select_db('loja');
                 </select>
 
                 <!-- Classificação -->
-                <label for="classificacao">Classificação:</label>
+                <label for="classificacao"> Classificação: </label>
                 <select name="classificacao" id="classificacao">
-                    <option value="" selected>Selecione...</option>
+                    <option value="" selected> Selecione... </option>
                     <?php
                     $query = mysql_query("SELECT codigo, nome FROM classificacao");
                     while($classificacao = mysql_fetch_array($query)) {
@@ -109,9 +113,9 @@ $db      = mysql_select_db('loja');
                 </select>
 
                 <!-- Marcas -->
-                <label for="marca">Marcas:</label>
+                <label for="marca"> Marcas: </label>
                 <select name="marca" id="marca">
-                    <option value="" selected>Selecione...</option>
+                    <option value="" selected> Selecione... </option>
                     <?php
                     $query = mysql_query("SELECT codigo, nome FROM marca");
                     while($marcas = mysql_fetch_array($query)) {
@@ -120,7 +124,7 @@ $db      = mysql_select_db('loja');
                     ?>
                 </select>
 
-                <button type="submit" name="pesquisar">Pesquisar</button>
+                <button type="submit" name="pesquisar"> Pesquisar </button>
             </form>
         </section>
 
@@ -163,7 +167,7 @@ $db      = mysql_select_db('loja');
     </main>
 
     <footer>
-        <p>&copy; 2025 Visual Modas By Kel - Todos os direitos reservados. </p>
+        <p>&copy; 2025 GREECE SPORTS - All rights reserved. </p>
     </footer>
 </body>
 
