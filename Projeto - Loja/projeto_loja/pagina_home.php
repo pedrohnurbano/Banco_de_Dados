@@ -1,44 +1,44 @@
-<!-- Código PHP: -->
 <?php
+// Conexão com o banco de dados usando mysql_
 $connect = mysql_connect('localhost', 'root', '');
+if (!$connect) {
+    die("Erro de conexão: " . mysql_error());
+}
 $db = mysql_select_db('loja');
+if (!$db) {
+    die("Erro ao selecionar o banco de dados: " . mysql_error());
+}
 ?>
 
-<!-- Código HTML: -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <title> GREECE SPORTS | Brazil </title>
+    <title>GREECE SPORTS | Brazil</title>
     <link rel="shortcut icon" href="design_images/greece_icon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <header>
+<body class="page-body">
+    <header class="page-header">
         <a href="pagina_home.php">
             <img src="design_images/greece_logo.png" width="264" alt="Logo da Loja">
         </a>
-
-        <a href="pagina_login.php">
-            <img src="design_images/search_icon.png" width="24" height="24" alt="Pesquisar">
-        </a>
-
-        <a href="pagina_login.php">
-            <img src="design_images/user_icon.png" width="24" height="24" alt="Login">
-        </a>
-
-        <a href="pagina_home.php">
-            <img src="design_images/favorite_icon.png" width="24" height="24" alt="Favoritos">
-        </a>
-
-        <a href="pagina_home.php">
-            <img src="design_images/bag_icon.png" width="24" height="24" alt="Sacola">
-        </a>
+        <div class="header-icons">
+            <a href="pagina_login.php">
+                <img src="design_images/user_icon.png" width="24" height="24" alt="Minha Conta">
+                <span>Minha conta e <br> <strong>Meus pedidos</strong></span>
+            </a>
+            <a href="pagina_home.php">
+                <img src="design_images/favorite_icon.png" width="24" height="24" alt="Favoritos">
+            </a>
+            <a href="pagina_home.php">
+                <img src="design_images/bag_icon.png" width="24" height="24" alt="Sacola">
+            </a>
+        </div>
     </header>
-
-    <!-- Banner com Setas: -->
+    <!-- Banner com Setas -->
     <div class="banner-slideshow">
         <div class="slides fade">
             <img src="design_images/banner_01.png" style="width:100%" height="auto">
@@ -50,7 +50,6 @@ $db = mysql_select_db('loja');
             <img src="design_images/banner_03.png" style="width:100%" height="auto">
         </div>
 
-        <!-- Setas do Banner: -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
@@ -79,150 +78,107 @@ $db = mysql_select_db('loja');
         }, 10000);
     </script>
 
-    <main>
-        <div id="titulo">
-            <h1> Material Esportivo </h1>
-        </div>
+    <main class="main-container">
+        <aside class="filter-sidebar">
+            <form name="formulario" method="post" action="pagina_home.php" class="form">
+                <fieldset>
+                    <legend>FILTROS</legend>
 
-        <section>
-            <h2>Pesquisas:</h2>
-            <form name="formulario" method="post" action="pesquisar.php" class="form">
+                    <label for="categoria">Categorias:</label>
+                    <select name="categoria" id="categoria">
+                        <option value="" selected>Selecione...</option>
+                        <?php
+                        $query = mysql_query("SELECT codigo, nome FROM categoria");
+                        while ($categorias = mysql_fetch_array($query)) {
+                            echo '<option value="' . $categorias['codigo'] . '">' . $categorias['nome'] . '</option>';
+                        }
+                        ?>
+                    </select>
 
-                <!-- Categorias: -->
-                <label for="categoria"> Categorias: </label>
-                <select name="categoria" id="categoria">
-                    <option value="" selected> Selecione... </option>
-                    <?php
-                    $query = mysql_query("SELECT codigo, descricao FROM categoria");
-                    while ($categorias = mysql_fetch_array($query)) {
-                        echo '<option value="' . $categorias['codigo'] . '">' . $categorias['descricao'] . '</option>';
-                    }
-                    ?>
-                </select>
+                    <label for="tipo">Tipo:</label>
+                    <select name="tipo" id="tipo">
+                        <option value="" selected>Selecione...</option>
+                        <?php
+                        $query = mysql_query("SELECT codigo, nome FROM tipo");
+                        while ($tipo = mysql_fetch_array($query)) {
+                            echo '<option value="' . $tipo['codigo'] . '">' . $tipo['nome'] . '</option>';
+                        }
+                        ?>
+                    </select>
 
-                <!-- Tipos: -->
-                <label for="tipo"> Tipo: </label>
-                <select name="tipo" id="tipo">
-                    <option value="" selected> Selecione... </option>
-                    <?php
-                    $query = mysql_query("SELECT codigo, nome FROM tipo");
-                    while ($tipo = mysql_fetch_array($query)) {
-                        echo '<option value="' . $tipo['codigo'] . '">' . $tipo['nome'] . '</option>';
-                    }
-                    ?>
-                </select>
+                    <label for="marca">Marcas:</label>
+                    <select name="marca" id="marca">
+                        <option value="" selected>Selecione...</option>
+                        <?php
+                        $query = mysql_query("SELECT codigo, nome FROM marca");
+                        while ($marcas = mysql_fetch_array($query)) {
+                            echo '<option value="' . $marcas['codigo'] . '">' . $marcas['nome'] . '</option>';
+                        }
+                        ?>
+                    </select>
 
-                <!-- Marcas: -->
-                <label for="marca"> Marcas: </label>
-                <select name="marca" id="marca">
-                    <option value="" selected> Selecione... </option>
-                    <?php
-                    $query = mysql_query("SELECT codigo, nome FROM marca");
-                    while ($marcas = mysql_fetch_array($query)) {
-                        echo '<option value="' . $marcas['codigo'] . '">' . $marcas['nome'] . '</option>';
-                    }
-                    ?>
-                </select>
-
-                <button type="submit" name="pesquisar"> Pesquisar </button>
+                    <button type="submit" name="pesquisar">Pesquisar</button>
+                </fieldset>
             </form>
-        </section>
+        </aside>
 
-        <section>
+        <section class="product-list">
             <?php
+            // Consulta padrão para listar todos os produtos
+            $sql_produtos = "SELECT produto.descricao, produto.cor, produto.tamanho, produto.preco, produto.foto_1, produto.foto_2
+                             FROM produto
+                             INNER JOIN marca ON produto.cod_marca = marca.codigo
+                             INNER JOIN categoria ON produto.cod_categoria = categoria.codigo
+                             INNER JOIN tipo ON produto.cod_tipo = tipo.codigo";
+
             if (isset($_POST['pesquisar'])) {
                 $marca = (empty($_POST['marca'])) ? 'null' : $_POST['marca'];
                 $categoria = (empty($_POST['categoria'])) ? 'null' : $_POST['categoria'];
                 $tipo = (empty($_POST['tipo'])) ? 'null' : $_POST['tipo'];
 
-                if (($marca != 'null') && ($categoria == 'null') && ($tipo == 'null')) {
-                    $sql_produtos = "SELECT produto.descricao, produto.cor, produto.tamanho, produto.preco, produto.foto1, produto.foto2
-                                     FROM produto, marca, categoria, tipo
-                                     WHERE produto.codmarca = marca.codigo
-                                     AND produto.codcategoria = categoria.codigo
-                                     AND produto.codtipo = tipo.codigo
-                                     AND marca.codigo = $marca";
+                $conditions = array();
 
-                    $seleciona_produtos = mysql_query($sql_produtos);
-
-                    if (mysql_num_rows($seleciona_produtos) == 0) {
-                        echo '<h3>Desculpe, mas sua busca não retornou resultados.</h3>';
-                    } else {
-                        echo "<h3>Resultado da pesquisa de Produtos:</h3>";
-                        while ($dados = mysql_fetch_object($seleciona_produtos)) {
-                            echo "<div class='produto'>";
-                            echo "<p><strong>Descrição:</strong> {$dados->descricao}<br>";
-                            echo "<strong>Cor:</strong> {$dados->cor}<br>";
-                            echo "<strong>Tamanho:</strong> {$dados->tamanho}<br>";
-                            echo "<strong>Preço:</strong> R$ {$dados->preco}</p>";
-                            echo "<img src='fotos/{$dados->foto1}' height='100' width='150' alt='Foto 1'>";
-                            echo "<img src='fotos/{$dados->foto2}' height='100' width='150' alt='Foto 2'>";
-                            echo "</div><br>";
-                        }
-                    }
+                if ($marca != 'null') {
+                    $conditions[] = "marca.codigo = $marca";
                 }
+                if ($categoria != 'null') {
+                    $conditions[] = "categoria.codigo = $categoria";
+                }
+                if ($tipo != 'null') {
+                    $conditions[] = "tipo.codigo = $tipo";
+                }
+
+                if (!empty($conditions)) {
+                    $sql_produtos .= " WHERE " . implode(' AND ', $conditions);
+                }
+            }
+
+            $seleciona_produtos = mysql_query($sql_produtos);
+
+            if (mysql_num_rows($seleciona_produtos) == 0) {
+                echo '<h3>Desculpe, mas sua busca não retornou resultados.</h3>';
+            } else {
+                echo "<h3>Produtos encontrados:</h3>";
+                echo '<div class="product-grid">';
+                while ($dados = mysql_fetch_object($seleciona_produtos)) {
+                    echo "<div class='product-card'>";
+                    echo "<img src='imagens/{$dados->foto_1}' alt='Foto 1'>";
+                    echo "<h4>{$dados->descricao}</h4>";
+                    echo "<p>Cor: {$dados->cor}</p>";
+                    echo "<p>Tamanho: {$dados->tamanho}</p>";
+                    echo "<p>Preço: R$ {$dados->preco}</p>";
+                    echo "<button class='buy-button'>Comprar</button>";
+                    echo "</div>";
+                }
+                echo '</div>';
             }
             ?>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 GREECE SPORTS - All rights reserved. </p>
+    <footer class="page-footer">
+        <p>&copy; 2025 GREECE SPORTS - All rights reserved.</p>
     </footer>
 </body>
+
 </html>
-
-<!-- --------------------------------------------------------------- -->
-<!-- CÓDIGO DO COPILOT GITHUB: -->
-<!-- --------------------------------------------------------------- -->
-
-<?php
-// $conectar = mysql_connect('localhost', 'root', '');
-// $banco = mysql_select_db('loja');
-
-// function obterCategorias()
-// {
-//     $query = mysql_query("SELECT codigo, descricao FROM categoria");
-//     $categorias = [];
-//     while ($linha = mysql_fetch_assoc($query)) {
-//         $categorias[] = $linha;
-//     }
-//     return $categorias;
-// }
-
-// function obterTipos()
-// {
-//     $query = mysql_query("SELECT codigo, nome FROM tipo");
-//     $tipos = [];
-//     while ($linha = mysql_fetch_assoc($query)) {
-//         $tipos[] = $linha;
-//     }
-//     return $tipos;
-// }
-
-// function obterMarcas()
-// {
-//     $marca = isset($_POST['marca']) ? intval($_POST['marca']) : null;
-//     $categoria = isset($_POST['categoria']) ? intval($_POST['categoria']) : null;
-//     $tipo = isset($_POST['tipo']) ? intval($_POST['tipo']) : null;
-
-//     $sql = "SELECT descricao, cor, tamanho, preco, foto_1, foto_2 FROM produto WHERE 1=1";
-
-//     if (!empty($marca)) {
-//         $sql .= " AND cod_marca = $marca";
-//     }
-//     if (!empty($categoria)) {
-//         $sql .= " AND cod_categoria = $categoria";
-//     }
-//     if (!empty($tipo)) {
-//         $sql .= " AND cod_tipo = $tipo";
-//     }
-
-//     $resultado = mysql_query($sql);
-//     while ($linha = mysql_fetch_assoc($resultado)) {
-//         $produtos[] = $linha;
-//     }
-// }
-?>
-
-<!-- --------------------------------------------------------------- -->
