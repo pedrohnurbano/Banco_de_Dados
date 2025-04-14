@@ -1,6 +1,6 @@
 <?php
 $conectar = mysql_connect('localhost','root','');
-$banco    = mysql_select_db('loja');
+$banco    = mysql_select_db('escola');
 
 if (isset($_POST['Entrar']))
     {
@@ -36,12 +36,12 @@ if (isset($_POST['Entrar']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Página de Login </title>
-    <link rel="shortcut icon" href="loja_icone.png" type="image/png">
+    <link rel="shortcut icon" href="satc_icon.png" type="image/png">
     <link rel="stylesheet"    href="styles.css">
 </head>
 
 <body>
-    <header><img src = "loja_logo.png" width="150"></header>
+    <header><img src = "satc_logo.png" width="150"></header>
 
     <main>
         <div id="titulo">
@@ -59,7 +59,7 @@ if (isset($_POST['Entrar']))
     </main>
 
     <footer>
-        <p>&copy; 2025 Visual Modas By Kel - Todos os direitos reservados. </p>
+        <p>&copy; 2025 Pedro Henrique do Nascimento Urbano - Todos os direitos reservados. </p>
     </footer>
 </body>
 

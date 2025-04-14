@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cadastro de Alunos </title>
+    <link rel="shortcut icon" href="satc_icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header><img src="satc_logo.png" width="150"></header>
+
+    <main>
+        <div id="titulo">
+            <h1> Formulário de Cadastro de Alunos </h1>
+        </div>
+
+        <form class='form' name="formulario" method="POST" action="cadastroaluno.php">
+            <fieldset>
+                <legend> Dados do Aluno: </legend>
+                <label> Código: <input type="text" name="cod_aluno" id="cod_aluno" size="5" required></label><br><br>
+                <label> Nome: <input type="text" name="nome" id="nome" size="50" required></label><br><br>
+                <label> Telefone: <input type="text" name="telefone" id="telefone" size="10" required></label><br><br>
+                <label> Código do Curso: <input type="text" name="cod_curso" id="cod_curso" size="5" required></label><br><br>
+            </fieldset>
+            <button type="submit" name="Gravar"> Gravar </button>
+            <button type="submit" name="Alterar"> Alterar </button>
+            <button type="submit" name="Excluir"> Excluir </button>
+            <button type="submit" name="Pesquisar"> Pesquisar </button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pedro Henrique do Nascimento Urbano - Todos os direitos reservados. </p>
+    </footer>
+</body>
+
+</html>
