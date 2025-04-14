@@ -72,8 +72,7 @@ label {
     color: #555;
 }
 
-input[type="text"],
-input[type="password"] {
+input[type="text"], input[type="password"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -108,11 +107,9 @@ footer {
     text-align: center;
 }
 
-.form{
+.form {
     margin-bottom: 30px;
 }
-
-/* Adicional - Styles da Página Home: */
 
 body2 {
     display: flex;
@@ -131,8 +128,6 @@ footer2 {
     text-align: center;
 }
 
-/* Adicional - Styles do Botão de Login da Home: */
-
 button2 {
     display: inline-block;
     width: 100%;
@@ -147,38 +142,34 @@ button2 {
     text-align: center;
 }
 
-/**/
-
 #abc_text {
     text-align: justify;
     margin: 0 30px;
 }
 
-/********************************************/
-
+/* ESTILIZAÇÃO DO BANNER: */
 .banner-slideshow {
     position: relative;
     max-width: 100%;
-    /* margin: 20px auto; */
 }
-
 .slides {
     display: none;
 }
-
 .slides img {
     width: 100%;
 }
-
 .fade {
     animation: fadeEffect 1s ease-in-out;
 }
-
 @keyframes fadeEffect {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
-}
+    from {
+        opacity: 0.4;
+    }
 
+    to {
+        opacity: 1;
+    }
+}
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -192,12 +183,10 @@ button2 {
     transform: translateY(-50%);
     z-index: 1;
 }
-
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
-
 .prev:hover, .next:hover {
     background-color: transparent;
 }
