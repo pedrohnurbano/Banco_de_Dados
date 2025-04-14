@@ -177,168 +177,52 @@ $db = mysql_select_db('loja');
 <!-- --------------------------------------------------------------- -->
 
 <?php
-$conectar = mysql_connect('localhost', 'root', '');
-$banco = mysql_select_db('loja');
+// $conectar = mysql_connect('localhost', 'root', '');
+// $banco = mysql_select_db('loja');
 
-function obterCategorias()
-{
-    $query = mysql_query("SELECT codigo, descricao FROM categoria");
-    $categorias = [];
-    while ($linha = mysql_fetch_assoc($query)) {
-        $categorias[] = $linha;
-    }
-    return $categorias;
-}
+// function obterCategorias()
+// {
+//     $query = mysql_query("SELECT codigo, descricao FROM categoria");
+//     $categorias = [];
+//     while ($linha = mysql_fetch_assoc($query)) {
+//         $categorias[] = $linha;
+//     }
+//     return $categorias;
+// }
 
-function obterTipos()
-{
-    $query = mysql_query("SELECT codigo, nome FROM tipo");
-    $tipos = [];
-    while ($linha = mysql_fetch_assoc($query)) {
-        $tipos[] = $linha;
-    }
-    return $tipos;
-}
+// function obterTipos()
+// {
+//     $query = mysql_query("SELECT codigo, nome FROM tipo");
+//     $tipos = [];
+//     while ($linha = mysql_fetch_assoc($query)) {
+//         $tipos[] = $linha;
+//     }
+//     return $tipos;
+// }
 
-function obterMarcas()
-{
-    $marca = isset($_POST['marca']) ? intval($_POST['marca']) : null;
-    $categoria = isset($_POST['categoria']) ? intval($_POST['categoria']) : null;
-    $tipo = isset($_POST['tipo']) ? intval($_POST['tipo']) : null;
+// function obterMarcas()
+// {
+//     $marca = isset($_POST['marca']) ? intval($_POST['marca']) : null;
+//     $categoria = isset($_POST['categoria']) ? intval($_POST['categoria']) : null;
+//     $tipo = isset($_POST['tipo']) ? intval($_POST['tipo']) : null;
 
-    $sql = "SELECT descricao, cor, tamanho, preco, foto_1, foto_2 FROM produto WHERE 1=1";
+//     $sql = "SELECT descricao, cor, tamanho, preco, foto_1, foto_2 FROM produto WHERE 1=1";
 
-    if (!empty($marca)) {
-        $sql .= " AND cod_marca = $marca";
-    }
-    if (!empty($categoria)) {
-        $sql .= " AND cod_categoria = $categoria";
-    }
-    if (!empty($tipo)) {
-        $sql .= " AND cod_tipo = $tipo";
-    }
+//     if (!empty($marca)) {
+//         $sql .= " AND cod_marca = $marca";
+//     }
+//     if (!empty($categoria)) {
+//         $sql .= " AND cod_categoria = $categoria";
+//     }
+//     if (!empty($tipo)) {
+//         $sql .= " AND cod_tipo = $tipo";
+//     }
 
-    $resultado = mysql_query($sql);
-    while ($linha = mysql_fetch_assoc($resultado)) {
-        $produtos[] = $linha;
-    }
-}
+//     $resultado = mysql_query($sql);
+//     while ($linha = mysql_fetch_assoc($resultado)) {
+//         $produtos[] = $linha;
+//     }
+// }
 ?>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GREECE SPORTS | Página Home</title>
-    <link rel="shortcut icon" href="design_images/greece_icon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <header>
-        <a href="pagina_home.php">
-            <img src="design_images/greece_logo.png" width="150" alt="Logo da Loja">
-        </a>
-    </header>
-
-    <div class="banner-slideshow">
-        <div class="slides fade"></div>
-            <img src="design_images/banner_01.png" style="width:100%">
-        </div>
-        <div class="slides fade">
-            <img src="design_images/banner_02.png" style="width:100%">
-        </div>
-        <div class="slides fade">
-            <img src="design_images/banner_03.png" style="width:100%">
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let i;
-            const slides = document.getElementsByClassName("slides");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-        }
-
-        setInterval(() => plusSlides(1), 10000);
-    </script>
-
-    <main>
-        <div id="titulo">
-            <h1>Material Esportivo</h1>
-        </div>
-
-        <section>
-            <h2>Pesquisas:</h2>
-            <form method="POST" action="pagina_home.php" class="form">
-                <label for="categoria">Categorias:</label>
-                <select name="categoria" id="categoria">
-                    <option value="">Selecione...</option>
-                    <?php foreach (obterCategorias() as $categoria): ?>
-                        <option value="<?= $categoria['codigo'] ?>"><?= $categoria['descricao'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-
-                <label for="tipo">Tipos:</label>
-                <select name="tipo" id="tipo">
-                    <option value="">Selecione...</option>
-                    <?php foreach (obterTipos() as $tipo): ?>
-                        <option value="<?= $tipo['codigo'] ?>"><?= $tipo['nome'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-
-                <label for="marca">Marcas:</label>
-                <select name="marca" id="marca">
-                    <option value="">Selecione...</option>
-                    <?php foreach (obterMarcas() as $marca): ?>
-                        <option value="<?= $marca['codigo'] ?>"><?= $marca['nome'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-
-                <button type="submit" name="pesquisar">Pesquisar</button>
-            </form>
-        </section>
-
-        <section>
-            <?php if (!empty($produtos)): ?>
-                <h3>Resultado da pesquisa de produtos:</h3>
-                <?php foreach ($produtos as $produto): ?>
-                    <div class="produto">
-                        <p><strong>Descrição:</strong> <?= $produto['descricao'] ?><br>
-                            <strong>Cor:</strong> <?= $produto['cor'] ?><br>
-                            <strong>Tamanho:</strong> <?= $produto['tamanho'] ?><br>
-                            <strong>Preço:</strong> R$ <?= number_format($produto['preco'], 2, ',', '.') ?>
-                        </p>
-                        <img src="imagens/<?= $produto['foto_1'] ?>" height="100" width="150" alt="Foto 1">
-                        <img src="imagens/<?= $produto['foto_2'] ?>" height="100" width="150" alt="Foto 2">
-                    </div>
-                <?php endforeach; ?>
-            <?php elseif (isset($_POST['pesquisar'])): ?>
-                <h3>Desculpe, mas sua busca não retornou resultados.</h3>
-            <?php endif; ?>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 GREECE SPORTS - Todos os direitos reservados.</p>
-    </footer>
-</body>
-
-</html>
 
 <!-- --------------------------------------------------------------- -->
