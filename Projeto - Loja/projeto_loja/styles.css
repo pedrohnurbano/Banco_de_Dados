@@ -1,3 +1,4 @@
+/* ESTILIZAÇÃO GERAL DO SITE: */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -5,7 +6,6 @@ body {
     background-color: white;
     color: black;
 }
-
 header {
     display: flex;
     justify-content: center;
@@ -14,34 +14,28 @@ header {
     color: black;
     padding: 10px 20px;
 }
-
 header ul {
     list-style: none;
     display: flex;
     justify-content: center;
     margin-left: 1000px;
 }
-
 header li {
     margin: 0 15px;
 }
-
 header a {
     color: black;
     text-decoration: none;
     font-weight: bold;
 }
-
 header a:hover {
     text-decoration: underline;
 }
-
 #titulo {
     text-align: center;
     margin: 50px 0;
     color: black;
 }
-
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -50,28 +44,24 @@ form {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 fieldset {
     border: 2px solid #ddd;
     padding: 20px;
     margin-bottom: 30px;
     border-radius: 8px;
 }
-
 legend {
     font-size: 1.5em;
     color: #333;
     font-weight: bold;
     margin-bottom: 20px;
 }
-
 label {
     display: block;
     font-size: 1.1em;
     margin-bottom: 10px;
     color: gray;
 }
-
 input[type="text"], input[type="password"] {
     width: 93%;
     padding: 12px;
@@ -81,7 +71,6 @@ input[type="text"], input[type="password"] {
     font-size: 1em;
     background-color: #f9f9f9;
 }
-
 button {
     display: inline-block;
     width: 100%;
@@ -95,39 +84,32 @@ button {
     margin-top: 20px;
     text-align: center;
 }
-
 button:hover {
     background-color: gray;
 }
-
 footer {
     background: white;
     color: black;
     padding: 20px 0;
     text-align: center;
 }
-
 .form {
     margin-bottom: 30px;
 }
-
 body2 {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-
 main2 {
     flex: 1;
 }
-
 footer2 {
     background: white;
     color: black;
     padding: 20px 0;
     text-align: center;
 }
-
 button2 {
     display: inline-block;
     width: 100%;
@@ -141,7 +123,6 @@ button2 {
     margin-top: 20px;
     text-align: center;
 }
-
 #abc_text {
     text-align: justify;
     margin: 0 30px;
@@ -325,7 +306,7 @@ button2 {
     opacity: 0.8;
 }
 
-/* ESTILIZAÇÃO DOS BOTÕES "COMPRAR": */
+/* ESTILIZAÇÃO DOS BOTÕES DE "COMPRAR": */
 .buy-button {
     display: inline-block;
     width: 100%;
