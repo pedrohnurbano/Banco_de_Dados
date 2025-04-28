@@ -8,6 +8,51 @@ $db = mysql_select_db('loja');
 if (!$db) {
     die("Erro ao selecionar o banco de dados: " . mysql_error());
 }
+
+// Inicialização da sessão
+session_start();
+$status = ""; // Inicialização da variável $status
+
+// Adicionar produto ao carrinho
+if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
+    $codigo = $_POST['codigo'];
+    $resultado = mysql_query("SELECT descricao, preco, foto_1 FROM produto WHERE codigo = '$codigo'");
+    if (!$resultado) {
+        die("Erro na consulta SQL: " . mysql_error());
+    }
+    $row = mysql_fetch_assoc($resultado);
+
+    if ($row) {
+        $descricao = $row['descricao'];
+        $preco = $row['preco'];
+        $foto1 = $row['foto_1'];
+
+        $cartArray = array(
+            $codigo => array(
+                'descricao' => $descricao,
+                'preco' => $preco,
+                'quantity' => 1,
+                'foto' => $foto1
+            )
+        );
+
+        if (empty($_SESSION["shopping_cart"])) {
+            $_SESSION["shopping_cart"] = $cartArray;
+            $status = "<div class='box'>Produto foi adicionado ao carrinho!</div>";
+        } else {
+            $array_keys = array_keys($_SESSION["shopping_cart"]);
+
+            if (in_array($codigo, $array_keys)) {
+                $status = "<div class='box' style='color:red;'>Produto já está no carrinho!</div>";
+            } else {
+                $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"], $cartArray);
+                $status = "<div class='box'>Produto foi adicionado ao carrinho!</div>";
+            }
+        }
+    } else {
+        $status = "<div class='box' style='color:red;'>Produto não encontrado!</div>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +78,18 @@ if (!$db) {
             <a href="pagina_home.php">
                 <img src="design_images/favorite_icon.png" width="24" height="24" alt="Favoritos">
             </a>
-            <a href="pagina_home.php">
+            <a href="carrinho.php">
                 <img src="design_images/bag_icon.png" width="24" height="24" alt="Sacola">
+                <?php
+                if (!empty($_SESSION["shopping_cart"])) {
+                    $cart_count = count(array_keys($_SESSION["shopping_cart"]));
+                    echo "<span>$cart_count</span>";
+                }
+                ?>
             </a>
         </div>
     </header>
+
     <!-- Banner com Setas -->
     <div class="banner-slideshow">
         <div class="slides fade">
@@ -125,16 +177,16 @@ if (!$db) {
         <section class="product-list">
             <?php
             // Consulta padrão para listar todos os produtos
-            $sql_produtos = "SELECT produto.descricao, produto.cor, produto.tamanho, produto.preco, produto.foto_1, produto.foto_2
+            $sql_produtos = "SELECT produto.codigo, produto.descricao, produto.cor, produto.tamanho, produto.preco, produto.foto_1, produto.foto_2
                              FROM produto
                              INNER JOIN marca ON produto.cod_marca = marca.codigo
                              INNER JOIN categoria ON produto.cod_categoria = categoria.codigo
                              INNER JOIN tipo ON produto.cod_tipo = tipo.codigo";
 
             if (isset($_POST['pesquisar'])) {
-                $marca = (empty($_POST['marca'])) ? 'null' : $_POST['marca'];
-                $categoria = (empty($_POST['categoria'])) ? 'null' : $_POST['categoria'];
-                $tipo = (empty($_POST['tipo'])) ? 'null' : $_POST['tipo'];
+                $marca = (empty($_POST['marca'])) ? 'null' : mysql_real_escape_string($_POST['marca']);
+                $categoria = (empty($_POST['categoria'])) ? 'null' : mysql_real_escape_string($_POST['categoria']);
+                $tipo = (empty($_POST['tipo'])) ? 'null' : mysql_real_escape_string($_POST['tipo']);
 
                 $conditions = array();
 
@@ -162,12 +214,15 @@ if (!$db) {
                 echo '<div class="product-grid">';
                 while ($dados = mysql_fetch_object($seleciona_produtos)) {
                     echo "<div class='product-card'>";
+                    echo "<form method='post' action=''>";
                     echo "<img src='imagens/{$dados->foto_1}' alt='Foto 1'>";
                     echo "<h4>{$dados->descricao}</h4>";
                     echo "<p>Cor: {$dados->cor}</p>";
                     echo "<p>Tamanho: {$dados->tamanho}</p>";
                     echo "<p>Preço: R$ {$dados->preco}</p>";
+                    echo "<input type='hidden' name='codigo' value='{$dados->codigo}'>";
                     echo "<button class='buy-button'>Comprar</button>";
+                    echo "</form>";
                     echo "</div>";
                 }
                 echo '</div>';
@@ -179,6 +234,11 @@ if (!$db) {
     <footer class="page-footer">
         <p>&copy; 2025 GREECE SPORTS - All rights reserved.</p>
     </footer>
+
+    <div style="clear:both;"></div>
+    <div class="message_box" style="margin:10px 0px;">
+        <?php echo $status; ?>
+    </div>
 </body>
 
 </html>

@@ -325,3 +325,47 @@ button2 {
 .buy-button:hover {
     background-color: gray;
 }
+
+
+
+
+
+
+
+
+
+
+/* Estilo para o número acima do ícone da sacola */
+.header-icons a span {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 5px 8px;
+    display: inline-block;
+    text-align: center;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+/* Estilo para a mensagem de status */
+.message_box {
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: green; /* Cor de fundo para sucesso */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.message_box.error {
+    background-color: red; /* Cor de fundo para erros */
+}
