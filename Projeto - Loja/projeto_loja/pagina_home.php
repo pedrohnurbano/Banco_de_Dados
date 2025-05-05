@@ -43,14 +43,14 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
             $array_keys = array_keys($_SESSION["shopping_cart"]);
 
             if (in_array($codigo, $array_keys)) {
-                $status = "<div class='box' style='color:red;'>Produto já está no carrinho!</div>";
+                $status = "<div class='boxerror'>Produto já está no carrinho!</div>";
             } else {
                 $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"], $cartArray);
                 $status = "<div class='box'>Produto foi adicionado ao carrinho!</div>";
             }
         }
     } else {
-        $status = "<div class='box' style='color:red;'>Produto não encontrado!</div>";
+        $status = "<div class='boxerror' style='color:blank;'>Produto não encontrado!</div>";
     }
 }
 ?>
@@ -73,7 +73,7 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
         <div class="header-icons">
             <a href="pagina_login.php">
                 <img src="design_images/user_icon.png" width="24" height="24" alt="Minha Conta">
-                <span>Minha conta e <br> <strong>Meus pedidos</strong></span>
+                <p>Minha conta e <br> <strong>Meus pedidos</strong></p>
             </a>
             <a href="pagina_home.php">
                 <img src="design_images/favorite_icon.png" width="24" height="24" alt="Favoritos">
@@ -129,6 +129,11 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
             plusSlides(1);
         }, 10000);
     </script>
+
+    <div style="clear:both;"></div>
+    <div class="message_box" style="margin:10px 0px;">
+        <?php echo $status; ?>
+    </div>
 
     <main class="main-container">
         <aside class="filter-sidebar">
@@ -234,11 +239,6 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
     <footer class="page-footer">
         <p>&copy; 2025 GREECE SPORTS - All rights reserved.</p>
     </footer>
-
-    <div style="clear:both;"></div>
-    <div class="message_box" style="margin:10px 0px;">
-        <?php echo $status; ?>
-    </div>
 </body>
 
 </html>
