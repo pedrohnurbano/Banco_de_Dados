@@ -29,6 +29,7 @@ if (isset($_POST['codigo']) && $_POST['codigo'] != "") {
 
         $cartArray = array(
             $codigo => array(
+                'codigo' => $codigo,  // Adicionando o código do produto
                 'descricao' => $descricao,
                 'preco' => $preco,
                 'quantity' => 1,

@@ -292,7 +292,7 @@ button2 {
     align-items: center;
 }
 .header-icons a img {
-    margin-right: 8px; /* Espaço entre o ícone e o texto */
+    margin-right: 8px; 
 }
 .header-icons a span {
     font-size: 12px;
@@ -325,8 +325,6 @@ button2 {
 .buy-button:hover {
     background-color: gray;
 }
-
-/* Estilo para o número acima do ícone da sacola */
 .header-icons a span {
     position: absolute;
     top: 20px;
@@ -344,8 +342,6 @@ button2 {
     line-height: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
-/* Estilo para a mensagem de status */
 .box {
     margin: 10px 0;
     padding: 15px;
@@ -354,10 +350,9 @@ button2 {
     font-weight: bold;
     text-align: center;
     color: white;
-    background-color: green; /* Cor de fundo para sucesso */
+    background-color: #008000; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 .boxerror {
     margin: 10px 0;
     padding: 15px;
@@ -366,10 +361,9 @@ button2 {
     font-weight: bold;
     text-align: center;
     color: white;
-    background-color: red; /* Cor de fundo para sucesso */
+    background-color: red; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 .box.error {
-    background-color: red; /* Cor de fundo para erros */
+    background-color: red; 
 }
